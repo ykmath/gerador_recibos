@@ -1,16 +1,31 @@
-const {app, BrowserWindow} = require("electron");
+const {app, BrowserWindow, ipcMain} = require("electron/main");
+const fs = require("fs");
+const path = require("path");
 
-const createWindow = () => {
+const createWindow = (page, x, y) => {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600
+        width: x,
+        height: y,
+        icon: "img/icon.ico",
+        webPreferences: {
+            preload: path.join(__dirname, "preload.js")
+        }
     })
 
-    win.loadFile("index.html");
+    win.loadFile(page + ".html");
+    return win;
 }
 
 app.whenReady().then(() => {
-    createWindow();
+    createWindow("index", 800, 600);
+
+    ipcMain.on("dados", (event, dados) => {
+        const arquivo = fs.open("texto.txt", "w", (err) => {});
+        const win = BrowserWindow.fromWebContents(event.sender);
+        win.setTitle(dados);
+        const reciboPagina = createWindow("recibo", 1200, 900);
+    })
+
 
     app.on("activate", () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
