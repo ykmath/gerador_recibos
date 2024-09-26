@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recibo</title>
     <link rel="stylesheet" href="css/recibo.css">
+    <script src="gerarRecibo.js" defer></script>
 </head>
 <body>
     <main>
@@ -35,21 +36,21 @@
             <tr id="cliente-l1">
                 <td class="info-box" colspan="20">
                     <h2>CLIENTE</h2>
-                    <p>José da Silva Bezerra</p>
+                    <p id="dados-cliente_nome"></p>
                 </td>
             </tr>
             <tr id="cliente-l2">
                 <td class="info-box" colspan="8">
-                    <h2>END.</h2>
-                    <p>a</p>
+                    <h2>ENDEREÇO</h2>
+                    <p id="dados-cliente-endereco"></p>
                 </td>
                 <td class="info-box" colspan="6">
                     <h2>BAIRRO</h2>
-                    <p>Jaergere</p>
+                    <p id="dados-cliente-bairro"></p>
                 </td>
                 <td class="info-box" colspan="3 ">
                     <h2>CIDADE</h2>
-                    <p>asretgerw</p>
+                    <p id="dados-cliente-cidade"></p>
                 </td>
                 <td class="info-box" colspan="1">
                     <h2>UF</h2>

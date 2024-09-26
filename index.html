@@ -3,15 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste App</title>
-    <script src="geradorRecibo.js" defer></script>
+    <title>Gerar Recibos</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="capturarDados.js" defer></script>
 </head>
 <body>
-    <h1>Olá!</h1>
-    <form autocomplete="off">
-        <input type="text" name="cliente" id="cliente" placeholder="Nome do Cliente">
-        <input type="submit" value="Gerar Recibo">
-    </form>
-    <a href="recibo.html">alo</a>
+    <main>
+        <h1>Gerador de Recibos</h1>
+        <form autocomplete="off">
+            <div id="form-datas">
+                <div class="box">
+                    <label for="emissao">Data de Emissão</label>
+                    <input type="date" name="emissao" id="emissao">
+                </div>
+                <div class="box">
+                    <label for="saida">Data de Saida</label>
+                    <input type="date" name="saida" id="saida">
+                </div>
+            </div>
+            <div id="cliente-info">
+                <div class="box">
+                    <label for="cliente">Nome do Cliente</label>
+                    <input type="text" name="cliente" id="cliente" placeholder="Ex: Maria da Silva...">
+                </div>
+                <div class="box">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" name="endereco" id="endereco" placeholder="Ex: Rua Exemplo...">
+                </div>
+                <div class="box">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" name="bairro" id="bairro" placeholder="Ex: Jardim Cuiabá...">
+                </div>
+                <div class="box">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" name="cidade" id="cidade" placeholder="Ex: Cuiabá...">
+                </div>
+            </div>
+            <br><br>
+            <input type="submit" value="Gerar Recibo">
+        </form>
+    </main>
 </body>
 </html>

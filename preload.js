@@ -1,5 +1,6 @@
-const {contextBridge, ipcRenderer} = require("electron/renderer");
+const {contextBridge, ipcRenderer} = require("electron");
 
 contextBridge.exposeInMainWorld("capturarDados", {
-    getDados: (dados) => ipcRenderer.send("dados", dados)
+    getDados: (dados) => ipcRenderer.send("getDados", dados),
+    setDados: (callback) => ipcRenderer.on("setDados", (_event, dados) => callback(dados))
 })
