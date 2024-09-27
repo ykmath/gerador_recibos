@@ -29,11 +29,25 @@ const valor2 = document.querySelector("#dados-fatura2-valor");
 
 const servicosLista = document.querySelector("#servicos");
 
+function invertDate(date) {
+    const split = date.split("-");
+
+    const year = split[0];
+    split[0] = split[2];
+    split[2] = year;
+
+    return `${split[0]}/${split[1]}/${split[2]}`;
+}
+
+function format(n) {
+    return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
 window.capturarDados.setDados((dados) => {
     // Datas
 
-    data_emissao.textContent = dados.data_emissao;
-    data_saida.textContent = dados.data_saida;
+    data_emissao.textContent = invertDate(dados.data_emissao);
+    data_saida.textContent = invertDate(dados.data_saida);
     
     // Informações do Cliente
 
@@ -50,13 +64,13 @@ window.capturarDados.setDados((dados) => {
     // Faturas
 
     fatura1.textContent = "1";
-    vencimento1.textContent = dados.vencimento1;
-    valor1.textContent = `R\$${dados.valor1}`.replace(".", ",");
+    vencimento1.textContent = invertDate(dados.vencimento1);
+    valor1.textContent = format(parseFloat(dados.valor1));
 
     if (dados.vencimento2 !== "") {
         fatura2.textContent = "2";
-        vencimento2.textContent = dados.vencimento2;
-        valor2.textContent = `R\$${dados.valor2}`.replace(".", ",");
+        vencimento2.textContent = invertDate(dados.vencimento2);
+        valor2.textContent = format(parseFloat(dados.valor2));
     }
 
     // Serviços
@@ -71,7 +85,9 @@ window.capturarDados.setDados((dados) => {
         const col3 = document.createElement("td");
         const col4 = document.createElement("td");
 
-        const val = parseInt(servico.valor.substring(2)) * parseInt(servico.qtd);
+        const unf = parseFloat(servico.valor.substring(2).replace(".", "").replace(",", "."));
+
+        const val = unf * parseInt(servico.qtd);
     
         row.append(col1, col2, col3, col4);
     
@@ -84,8 +100,8 @@ window.capturarDados.setDados((dados) => {
 
         col1.textContent = servico.qtd;
         col2.textContent = servico.desc;
-        col3.textContent = servico.valor;
-        col4.textContent = `R\$${val}`;
+        col3.textContent = format(unf);
+        col4.textContent = format(val);
 
         total += val;
 
@@ -107,7 +123,7 @@ window.capturarDados.setDados((dados) => {
     col2.className = "servicos-box-col";
     
     col1.innerHTML = "<strong>VALOR TOTAL</strong>";
-    col2.innerHTML = `<strong>R\$${total}</strong>`;
+    col2.innerHTML = `<strong>${format(total)}</strong>`;
 
     servicosLista.appendChild(row);
 })

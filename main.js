@@ -27,10 +27,10 @@ app.whenReady().then(() => {
         })
     })
 
-    ipcMain.on("pdf", (event) => {
+    ipcMain.on("pdf", (event, nome) => {
         event.sender.printToPDF({})
          .then((data) => {
-            fs.writeFile("output.pdf", data, (err) => {});
+            fs.writeFile(path.join(app.getPath("downloads"), `Recibo - ${nome}.pdf`), data, (err) => {});
          })
     })
 

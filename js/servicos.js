@@ -24,6 +24,10 @@ adicaoCancelarBtn.addEventListener("click", () => {
     changeMode(false);
 })
 
+function format(n) {
+    return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
 function changeMode(val) {
     if (val) {
         lista.style.display = "none";
@@ -62,7 +66,7 @@ function adicionarServico() {
     sQtd.id = "servico-quantidade";
 
     sDesc.textContent = adicaoDesc.value !== "" ? adicaoDesc.value : "Sem descrição";
-    sVal.textContent = `R\$${adicaoValor.value !== "" ? adicaoValor.value : 0}`.replace(".", ",");
+    sVal.textContent = format(parseFloat(adicaoValor.value));
     sQtd.textContent = adicaoQtd.value;
 
     box.appendChild(sDesc);

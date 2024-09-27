@@ -26,7 +26,7 @@ strong {
     }
 
     #botoes {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -64,6 +64,25 @@ main {
     max-width: 1200px;
     margin: auto;
     padding: 2rem 0;
+}
+
+#botoes {
+    display: flex;
+    padding: 2rem;
+    justify-content: center;
+}
+
+#pdfButton {
+    padding: 1rem;
+    background-color: lightgray;
+    font-size: 20px;
+    color: black;
+    transition: 0.4s;
+}
+
+#pdfButton:hover {
+    background-color: rgb(255, 137, 137);
+    cursor: pointer;
 }
 
 header {
