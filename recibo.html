@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recibo</title>
     <link rel="stylesheet" href="css/recibo.css">
-    <script src="gerarRecibo.js" defer></script>
+    <script src="js/gerarRecibo.js" defer></script>
+    <script src="js/impressao.js" defer></script>
 </head>
 <body>
     <main>
@@ -28,7 +29,7 @@
                 </div>
                 <div id="header-datas-l4">
                     <p id="header-box-data_emissao">19/08/2024</p>
-                    <p id="header-box-data-saida">05/10/2024</p>
+                    <p id="header-box-data_saida">05/10/2024</p>
                 </div>
             </div>
         </header>
@@ -54,25 +55,25 @@
                 </td>
                 <td class="info-box" colspan="1">
                     <h2>UF</h2>
-                    <p>Que</p>
+                    <p id="dados-cliente-uf"></p>
                 </td>
             </tr>
             <tr id="cliente-l3">
                 <td class="info-box" colspan="1">
                     <h2>FONE</h2>
-                    <p>34233</p>
+                    <p id="dados-cliente-fone"></p>
                 </td>
                 <td class="info-box" colspan="7">
                     <h2>CEP</h2>
-                    <p>352354</p>
+                    <p id="dados-cliente-cep"></p>
                 </td>
                 <td class="info-box" colspan="6">
                     <h2>INSC. EST.</h2>
-                    <p>123</p>
+                    <p id="dados-cliente-insc"></p>
                 </td>
                 <td class="info-box" colspan="8">
                     <h2>CPF/CNPJ</h2>
-                    <p>asewdas</p>
+                    <p id="dados-cliente-cpf_cnpj"></p>
                 </td>
             </tr>
         </table>
@@ -87,12 +88,12 @@
                 <td class="box-title"><strong>VALOR</strong></td>
             </tr>
             <tr>
-                <td>1</td>
-                <td>19/08/2020</td>
-                <td>R$224,30</td>
-                <td>4</td>
-                <td>19/08/2025</td>
-                <td>R$1234,32</td>
+                <td id="dados-fatura1"></td>
+                <td id="dados-fatura1-vencimento"></td>
+                <td id="dados-fatura1-valor"></td>
+                <td id="dados-fatura2"></td>
+                <td id="dados-fatura2-vencimento"></td>
+                <td id="dados-fatura2-valor"></td>
             </tr>
         </table>
 
@@ -102,34 +103,6 @@
                 <td class="box-title"><strong>DESCRIÇÃO DOS SERVIÇOS</strong></td>
                 <td class="box-title"><strong>VALOR UNIT.</strong></td>
                 <td class="box-title"><strong>VALOR TOTAL</strong></td>
-            </tr>
-            <tr class="servicos-box-row">
-                <td class="servicos-box-col">2</td>
-                <td class="servicos-box-col">servicos comprados</td>
-                <td class="servicos-box-col">R$20,00</td>
-                <td class="servicos-box-col">soma</td>
-            </tr>
-            <tr class="servicos-box-row">
-                <td class="servicos-box-col">2</td>
-                <td class="servicos-box-col">servicos comprados</td>
-                <td class="servicos-box-col">R$20,00</td>
-                <td class="servicos-box-col">soma</td>
-            </tr>
-            <tr class="servicos-box-row">
-                <td class="servicos-box-col">2</td>
-                <td class="servicos-box-col">servicos comprados</td>
-                <td class="servicos-box-col">R$20,00</td>
-                <td class="servicos-box-col">soma</td>
-            </tr>
-            <tr class="servicos-box-row">
-                <td class="servicos-box-col">2</td>
-                <td class="servicos-box-col">servicos comprados</td>
-                <td class="servicos-box-col">R$20,00</td>
-                <td class="servicos-box-col">soma</td>
-            </tr>
-            <tr class="servicos-box-row-sum">
-                <td class="servicos-box-col" colspan="3"><strong>VALOR TOTAL</strong></td>
-                <td class="servicos-box-col">soma</td>
             </tr>
         </table>
 
@@ -144,6 +117,9 @@
             <div id="assinatura-box-right">
                 <p>DEIXAMOS DE EMITIR NOTA FISCAL DE SERVIÇO EM FUNÇÃO DA LEI COMPLEMENTAR 116/2003</p>
             </div>
+        </section>
+        <section id="botoes">
+            <button id="pdfButton">Gerar PDF</button>
         </section>
     </main>
 </body>

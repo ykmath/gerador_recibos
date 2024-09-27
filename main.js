@@ -1,5 +1,6 @@
 const {app, BrowserWindow, ipcMain} = require("electron");
 const path = require("path");
+const fs = require("fs");
 
 const createWindow = (page, x, y) => {
     const win = new BrowserWindow({
@@ -24,6 +25,13 @@ app.whenReady().then(() => {
         reciboPagina.webContents.on("did-finish-load", () => {
             reciboPagina.webContents.send("setDados", dados);
         })
+    })
+
+    ipcMain.on("pdf", (event) => {
+        event.sender.printToPDF({})
+         .then((data) => {
+            fs.writeFile("output.pdf", data, (err) => {});
+         })
     })
 
     app.on("activate", () => {

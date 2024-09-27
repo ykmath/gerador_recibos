@@ -25,12 +25,11 @@ body {
     
 main {
     position: absolute;
-    top: 50%;
     left: 50%;
     padding: 2rem;
     width: 60%;
     max-width: 800px;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
 }
 
 main > h1 {
@@ -58,6 +57,7 @@ main > h1 {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    margin-bottom: 30px;
 }
 
 #cliente {
@@ -66,6 +66,140 @@ main > h1 {
 
 #endereco {
     width: 400px;
+}
+
+#uf {
+    width: 50px;
+}
+
+.fatura-box {
+    margin-bottom: 20px;
+}
+
+.fatura-box > h2 {
+    margin-bottom: 10px;
+}
+
+.fatura-box-container {
+    display: flex;
+    background-color: rgb(185, 185, 185);
+    padding: 1rem;
+    gap: 15px;
+}
+
+.fatura-box-container 
+:where(
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button
+) 
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.fatura-box-container input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#servicos > h2 {
+    margin-bottom: 10px;
+}
+
+#servicos > h3 {
+    display: none;
+    margin-bottom: 8px;
+}
+
+#servicos-lista {
+    list-style-type: none;
+}
+
+#servicos-lista > li {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+#servico-descricao {
+    width: 70%;
+    border-right: 1px solid black;
+    hyphens: auto;
+}
+
+#servico-valor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    border-right: 1px solid black;
+}
+
+#servico-quantidade {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+}
+
+#servicos-modo-adicao {
+    display: none;
+    gap: 10px;
+}
+
+#adicao-descricao {
+    width: 260px;
+}
+
+#adicao-valor-label {
+    text-align: center;
+}
+
+#adicao-valor {
+    text-align: center;
+}
+
+#adicao-quantidade-label {
+    text-align: center;
+}
+
+#adicao-quantidade {
+    width: 60px;
+    text-align: center;
+}
+
+#servicos-hud {
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid black;
+    padding: 0.5rem 0;
+    margin-top: 10px;
+}
+
+#servicos-hud > button {
+    font-size: 19px;
+    padding: 10px;
+    background-color: rgb(235, 210, 156);
+    font-weight: 600;
+    border: 2px solid black;
+}
+
+#adicao-add {
+    display: none;
+}
+
+#adicao-cancelar {
+    display: none;
+    background-color: rgb(255, 188, 188) !important;
+}
+
+#adicao-cancelar:hover {
+    background-color: rgb(247, 98, 98) !important;
+}
+
+#servicos-hud > button:hover {
+    background-color: rgb(214, 173, 98);
+    cursor: pointer;
 }
 
 input[type=submit] {

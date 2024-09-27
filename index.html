@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerar Recibos</title>
     <link rel="stylesheet" href="css/index.css">
-    <script src="capturarDados.js" defer></script>
+    <script src="js/capturarDados.js" defer></script>
+    <script src="js/servicos.js" defer></script>
 </head>
 <body>
     <main>
@@ -14,29 +15,101 @@
             <div id="form-datas">
                 <div class="box">
                     <label for="emissao">Data de Emissão</label>
-                    <input type="date" name="emissao" id="emissao">
+                    <input type="date" name="emissao" id="emissao" required>
                 </div>
                 <div class="box">
                     <label for="saida">Data de Saida</label>
-                    <input type="date" name="saida" id="saida">
+                    <input type="date" name="saida" id="saida" required>
                 </div>
             </div>
             <div id="cliente-info">
                 <div class="box">
                     <label for="cliente">Nome do Cliente</label>
-                    <input type="text" name="cliente" id="cliente" placeholder="Ex: Maria da Silva...">
+                    <input type="text" name="cliente" id="cliente" required>
                 </div>
                 <div class="box">
                     <label for="endereco">Endereço</label>
-                    <input type="text" name="endereco" id="endereco" placeholder="Ex: Rua Exemplo...">
+                    <input type="text" name="endereco" id="endereco" required>
                 </div>
                 <div class="box">
                     <label for="bairro">Bairro</label>
-                    <input type="text" name="bairro" id="bairro" placeholder="Ex: Jardim Cuiabá...">
+                    <input type="text" name="bairro" id="bairro" required>
                 </div>
                 <div class="box">
                     <label for="cidade">Cidade</label>
-                    <input type="text" name="cidade" id="cidade" placeholder="Ex: Cuiabá...">
+                    <input type="text" name="cidade" id="cidade" required>
+                </div>
+                <div class="box">
+                    <label for="uf">UF</label>
+                    <input type="text" name="uf" id="uf" required>
+                </div>
+                <div class="box">
+                    <label for="fone">Fone</label>
+                    <input type="text" name="fone" id="fone" required>
+                </div>
+                <div class="box">
+                    <label for="cep">CEP</label>
+                    <input type="text" name="cep" id="cep" required>
+                </div>
+                <div class="box">
+                    <label for="insc">Insc. Est.</label>
+                    <input type="text" name="insc" id="insc" required>
+                </div>
+                <div class="box">
+                    <label for="cpf-cnpj">CPF/CNPJ</label>
+                    <input type="text" name="cpf-cnpj" id="cpf-cnpj" required>
+                </div>
+            </div>
+            <div id="faturas">
+                <div class="fatura-box">
+                    <h2>Fatura 1</h2>
+                    <div class="fatura-box-container">
+                        <div class="box">
+                            <label for="vencimento1">Vencimento</label>
+                            <input type="date" name="vencimento1" id="vencimento1" required>
+                        </div>
+                        <div class="box">
+                            <label for="valor1">Valor</label>
+                            <input type="number" name="valor1" id="valor1" step="0.01">
+                        </div>
+                    </div>
+                </div>
+                <div class="fatura-box">
+                    <h2>Fatura 2</h2>
+                    <div class="fatura-box-container">
+                        <div class="box">
+                            <label for="vencimento2">Vencimento</label>
+                            <input type="date" name="vencimento2" id="vencimento2">
+                        </div>
+                        <div class="box">
+                            <label for="valor2">Valor</label>
+                            <input type="number" name="valor2" id="valor2" step="0.01">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="servicos">
+                <h2>Serviços</h2>
+                <h3>Adicionando serviço</h3>
+                <ul id="servicos-lista"></ul>
+                <div id="servicos-modo-adicao">
+                    <div class="box">
+                        <label for="adicao-descricao">Descrição</label>
+                        <input type="text" name="adicao-descricao" id="adicao-descricao">
+                    </div>
+                    <div class="box">
+                        <label for="adicao-valor" id="adicao-valor-label">Valor Unit.</label>
+                        <input type="number" name="adicao-valor" id="adicao-valor" step="0.01">
+                    </div>
+                    <div class="box">
+                        <label for="adicao-quantidade" id="adicao-quantidade-label">Qtd.</label>
+                        <input type="number" name="adicao-quantidade" id="adicao-quantidade" step="1" value="1">
+                    </div>
+                </div>
+                <div id="servicos-hud">
+                    <button type="button" id="add">Adicionar Serviço</button>
+                    <button type="button" id="adicao-add">Adicionar</button>
+                    <button type="button" id="adicao-cancelar">Cancelar</button>
                 </div>
             </div>
             <br><br>

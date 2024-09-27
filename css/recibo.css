@@ -24,6 +24,10 @@ strong {
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
     }
+
+    #botoes {
+        display: none;
+    }
 }
 
 .section {
