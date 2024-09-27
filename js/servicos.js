@@ -60,18 +60,20 @@ function adicionarServico() {
     const sDesc = document.createElement("p");
     const sVal = document.createElement("p");
     const sQtd = document.createElement("p");
+    const trash = document.createElement("div");
 
     sDesc.id = "servico-descricao";
     sVal.id = "servico-valor";
     sQtd.id = "servico-quantidade";
+    trash.id = "servico-lixeira";
+
+    trash.addEventListener("click", () => {box.remove()});
 
     sDesc.textContent = adicaoDesc.value !== "" ? adicaoDesc.value : "Sem descrição";
-    sVal.textContent = format(parseFloat(adicaoValor.value));
+    sVal.textContent = format(parseFloat(adicaoValor.value !== "" ? adicaoValor.value : 0));
     sQtd.textContent = adicaoQtd.value;
 
-    box.appendChild(sDesc);
-    box.appendChild(sVal);
-    box.appendChild(sQtd);
+    box.append(sDesc, sVal, sQtd, trash);
 
     lista.appendChild(box);
 }

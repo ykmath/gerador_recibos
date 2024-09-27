@@ -1,6 +1,30 @@
-const {app, BrowserWindow, ipcMain} = require("electron");
+const {app, BrowserWindow, ipcMain, Menu} = require("electron");
 const path = require("path");
 const fs = require("fs");
+
+const createSplashScreen = () => {
+    const splash = new BrowserWindow({
+        width: 600,
+        height: 300,
+        frame: false,
+        show: false,
+        resizable: false,
+        alwaysOnTop: true,
+    })
+
+    splash.loadFile("./splash.html");
+
+    splash.once("ready-to-show", () => {splash.show()});
+
+    const mainApp = createWindow("index", 800, 600);
+
+    mainApp.once("ready-to-show", () => {
+        if (splash) {
+            splash.close();
+        }
+        mainApp.show();
+    })
+}
 
 const createWindow = (page, x, y) => {
     const win = new BrowserWindow({
@@ -8,17 +32,21 @@ const createWindow = (page, x, y) => {
         height: y,
         minWidth: 900,
         minHeight: 600,
+        show: false,
         webPreferences: {
             preload: path.join(__dirname, "preload.js")
         }
     })
 
     win.loadFile(`${page}.html`);
+
+    Menu.setApplicationMenu(null);
+
     return win;
 }
 
 app.whenReady().then(() => {
-    createWindow("index", 800, 600);
+    createSplashScreen();
 
     ipcMain.on("getDados", (event, dados) => {
         const reciboPagina = createWindow("recibo", 1200, 900);
@@ -35,7 +63,7 @@ app.whenReady().then(() => {
     })
 
     app.on("activate", () => {
-        if (BrowserWindow.getAllWindows().length === 0) createWindow();
+        if (BrowserWindow.getAllWindows().length === 0) createSplashScreen();
     })
 
     app.on("window-all-closed", () => {

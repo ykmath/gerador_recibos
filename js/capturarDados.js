@@ -34,6 +34,16 @@ const valor2 = document.querySelector("#valor2");
 
 const listaa = document.querySelector("#servicos-lista");
 
+// Limpar Dados
+
+const resetButton = document.querySelector("input[type=reset]");
+
+resetButton.addEventListener("click", () => {
+    Array.from(listaa.children).map((servico) => {
+        servico.remove();
+    })
+})
+
 form.onsubmit = (e) => {
     e.preventDefault();
 
