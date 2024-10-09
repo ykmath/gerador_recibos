@@ -44,6 +44,14 @@ resetButton.addEventListener("click", () => {
     })
 })
 
+// Abrir pasta Downloads
+
+const folderBtn = document.querySelector("#folders");
+
+folderBtn.addEventListener("click", () => {
+    window.capturarDados.openFolders();
+})
+
 form.onsubmit = (e) => {
     e.preventDefault();
 
